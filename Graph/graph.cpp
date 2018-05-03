@@ -4,7 +4,7 @@ class Edge {
 public:
 	int vertex, weight;
 	Edge() {vertex = -1; weight = -1;}
-	Edge(int v, int w) {vertex = v; weighe = w;}
+	Edge(int v, int w) {vertex = v; weight = w;}
 };
 
 class Graphm : public Graph {
@@ -20,7 +20,7 @@ public:
 		mark = new int[numVert];	//Initialize mark array
 		for (i=0; i<numVertex; i++)
 			mark[i] = UNVISITED;
-		matrix = (int**)new int* [numBertex];
+		matrix = (int**)new int* [numVertex];
 		for (i = 0; i<numVertex; i++)
 			matrix[i] = new int[numVertex];
 		for (i = 0; i<numVertex; i++)
@@ -56,7 +56,7 @@ public:
 	
 	//Set edge (v1, v2) to wgt
 	void setEdge(int v1, int v2, int wgt) {
-		Assert(wgt>0, "Illegal weight value");
+	//	Assert(wgt>0, "Illegal weight value");
 		if (matrix[v1][v2] == 0)
 			numEdge++;
 		matrix[v1][v2] = wgt;
@@ -76,23 +76,6 @@ public:
 	}
 	void setMark(int v, int val){
 		mark[v] = val;
-	}
-
-	void DFS (Graph * G, int v) {
-		G -> setMark(v, VISITED);
-		for (int w=G -> first(v); w < G -> n(); w = G -> next(v, w))
-			if (G -> getMark(w) == UNVISITED)
-				DFS(G,w);
-	}
-
-	void graphTraverse(const Graph *G) {
-		for (v = 0; v < G -> n(); v++)
-			G -> setMark(v, UNVISITED);
-		for (v = 0; v < G -> n(); v++)
-			if (G -> getMark(v) == UNVISITED)
-				DFS(G,v);
-	}
-
-	
+	}	
 
 };
