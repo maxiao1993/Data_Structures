@@ -1,5 +1,9 @@
 // Graph abstruct class
 
+#define UNVISITED 0
+#define VISITED	1
+
+
 class Graph{
 public:
 	//Return the number of vertices

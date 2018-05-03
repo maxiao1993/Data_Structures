@@ -1,5 +1,5 @@
-
 #include"graph.h"
+
 class Edge {
 public:
 	int vertex, weight;
@@ -77,4 +77,22 @@ public:
 	void setMark(int v, int val){
 		mark[v] = val;
 	}
+
+	void DFS (Graph * G, int v) {
+		G -> setMark(v, VISITED);
+		for (int w=G -> first(v); w < G -> n(); w = G -> next(v, w))
+			if (G -> getMark(w) == UNVISITED)
+				DFS(G,w);
+	}
+
+	void graphTraverse(const Graph *G) {
+		for (v = 0; v < G -> n(); v++)
+			G -> setMark(v, UNVISITED);
+		for (v = 0; v < G -> n(); v++)
+			if (G -> getMark(v) == UNVISITED)
+				DFS(G,v);
+	}
+
+	
+
 };
